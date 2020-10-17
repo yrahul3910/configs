@@ -86,3 +86,8 @@ filetype plugin indent on
 set tabstop=4 shiftwidth=4 expandtab
 set noerrorbells
 set belloff=all
+
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
