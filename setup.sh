@@ -5,7 +5,7 @@ Var=$Ell/.var
 mkdir -p $Var
 
 # Install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 want=$Var/vimrc;
 [ -f "$want" ] || cat<<'EOF'>$want
@@ -79,6 +79,7 @@ if (empty($TMUX))
 endif
 
 syntax on
+packadd! onedark.vim
 colorscheme onedark
 
 set number autoindent
@@ -96,12 +97,12 @@ EOF
 
 mv $Var/vimrc ~/.vimrc
 cd ~/.vim/bundle/youcompleteme/ && python3 install.py
-git clone https://github.com/joshdick/onedark.vim.git ~/.vim/pack/*/opt/onedark.vim/
+git clone https://github.com/joshdick/onedark.vim.git ~/.vim/pack/onedark/opt/onedark.vim/
 
 if [ ! -d "$HOME/.vim/bundle" ]; then
    git clone https://github.com/VundleVim/Vundle.vim.git \
          ~/.vim/bundle/Vundle.vim
-   vim -u $Var/vimrc  +PluginInstall +qall
+   vim -u .vimrc  +PluginInstall +qall
 fi
 
 want=$Var/tmuxrc
@@ -290,3 +291,4 @@ alias jupyter=/Users/ryedida/opt/anaconda3/bin/jupyter
 EOF
 
 mv $Var/.tmuxrc ~/.tmuxrc
+rm -r $Var
